@@ -18,7 +18,6 @@ public class Main {
 			String surname = in.nextLine();
 			
 			switch (name + "_" + surname) {
-			
 			case "exit_":
 				exit = true;
 				break;
