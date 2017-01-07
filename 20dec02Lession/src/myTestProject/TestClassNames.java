@@ -22,14 +22,14 @@ class $dollarClass {
 	public $dollarClass() {
 		System.out.println("This is " + this.getClass().getName());
 	}
-};
+}
 class smallCharClass {
 	public smallCharClass() {
 		System.out.println("This is " + this.getClass().getName());
 	}
-};
+}
 class _UnderscoreClass {
 	public _UnderscoreClass() {
 		System.out.println("This is " + this.getClass().getName());
 	}
-};
+}

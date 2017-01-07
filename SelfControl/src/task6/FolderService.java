@@ -25,6 +25,7 @@ public class FolderService {
 				isCreate = true;
 			} catch (SecurityException secExc) {
 				secExc.printStackTrace();
+				System.out.println("SecurityException catched");
 			}
 			if (isCreate) {
 				System.out.println("Folder created");

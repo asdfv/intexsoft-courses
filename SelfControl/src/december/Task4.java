@@ -3,7 +3,7 @@ package december;
 // Spiral snake
 public class Task4 {
 
-	static final int N = 10;
+	static final int N = 9;
 
 	public static void main(String[] args) {
 		
