@@ -5,7 +5,7 @@ public class Snake_1 {
 	public static void main(String[] args) {
 
 		long start = System.currentTimeMillis();
-		int n = 10000;
+		int n = 10;
 		int[][] matrix = new int[n][n];
 
 		int row = 0;
@@ -29,12 +29,7 @@ public class Snake_1 {
 		}
 		long end = System.currentTimeMillis();
 
-//		for (int i = 0; i < n; i++) {
-//			for (int j = 0; j < n; j++)
-//				System.out.print(matrix[i][j] + "\t");
-//			System.out.println();
-//		}
+		CustomPrintArray.printArray(matrix);
 		System.out.println("Exe-time without printing - " + (end - start) + " ms");
-		
 	}
 }

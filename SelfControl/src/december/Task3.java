@@ -21,6 +21,6 @@ public class Task3 {
 				}
 			}
 		}
-		CustomPrintArray.printArray(matrix, N);
+		CustomPrintArray.printArray(matrix);
 	}
 }

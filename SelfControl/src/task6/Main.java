@@ -4,19 +4,19 @@ import java.util.Scanner;
 
 // Type name 'exit' to exit program
 public class Main {
-	
+
 	public static void main(String[] args) {
-		
+
 		boolean exit = false;
-		
+
 		while (!exit) {
-			
+
 			Scanner in = new Scanner(System.in);
 			System.out.print("_________________\nEnter name: ");
 			String name = in.nextLine();
 			System.out.print("Enter surname: ");
 			String surname = in.nextLine();
-			
+
 			switch (name + "_" + surname) {
 			case "exit_":
 				exit = true;
@@ -31,6 +31,7 @@ public class Main {
 				FolderService.createFolder(name.toUpperCase() + "_" + surname.toUpperCase());
 				break;
 			}
+			if (in != null) in.close();
 		}
 	}
 }

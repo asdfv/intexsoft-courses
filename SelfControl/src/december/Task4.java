@@ -7,8 +7,6 @@ public class Task4 {
 
 	public static void main(String[] args) {
 		
-		long start = System.currentTimeMillis();
-		
 		int[][] matrix = new int[N][N];
 		int count = 1;
 		int step = N - 1;
@@ -32,11 +30,7 @@ public class Task4 {
 		}
 		if (0 != N % 2)
 			matrix[(N - 1) / 2][(N - 1) / 2] = N * N;
-		long end = System.currentTimeMillis();
 		
-		CustomPrintArray.printArray(matrix, N);
-		
-		System.out.println("Exe-time without printing - " + (end - start) + " ms");
-		
+		CustomPrintArray.printArray(matrix);
 	}
 }

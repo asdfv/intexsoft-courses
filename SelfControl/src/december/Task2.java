@@ -2,7 +2,7 @@ package december;
 
 // Pyramidal 2D array
 public class Task2 {
-	static final int N = 100;
+	static final int N = 9;
 
 	public static void main(String[] args) {
 		int[][] matrix = new int[N][N];
@@ -15,6 +15,6 @@ public class Task2 {
 				}
 			}
 		}
-		CustomPrintArray.printArray(matrix, N/10);
+		CustomPrintArray.printArray(matrix);
 	}
 }

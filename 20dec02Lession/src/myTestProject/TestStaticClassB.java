@@ -2,6 +2,8 @@ package myTestProject;
 
 public class TestStaticClassB extends TestStaticClassA {
 	
+	int i = 2;
+	
 	static void print() {
 		System.out.println("Child staic method");
 	}
@@ -14,5 +16,8 @@ public class TestStaticClassB extends TestStaticClassA {
 		
 		instanceA.print();
 		instanceB.print();
+		
+		System.out.println(instanceA.i);
+		System.out.println(instanceB.i);
 	}
 }

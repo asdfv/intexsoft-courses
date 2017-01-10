@@ -11,7 +11,7 @@ public class OperatorSequence {
 		int i = 0;
 		System.out.println("i = " + i + "\n");
 		
-		array[i++] = array[i++]++ + ++array[++i];
+		array[i++] = array[i++]++ + ++array[i++];
 		
 		printArray(array);
 		System.out.println("i = " + i);
