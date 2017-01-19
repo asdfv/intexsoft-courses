@@ -1,6 +1,8 @@
 package blockInitialization;
 
-class TestClass {
+public class TestClass {
+	
+	public static final String FINAL_STRING = "Private static final String!";
 	
 	public static String classVariable = "Class variable";
 
@@ -17,5 +19,11 @@ class TestClass {
 	}
 	public static String staticMethod() {
 		return "Static method";
+	}
+	
+	private static class InnerClass {
+		static {
+			System.out.println("Static block in inner Class");
+		}
 	}
 }
