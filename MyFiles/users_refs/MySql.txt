@@ -1,0 +1,41 @@
+-- all users who are managers
+set schema 'test';
+select distinct u.name from refs r
+left join users u
+on u.user_id = r.manager_id;
+
+-- users who are manager for yourself
+set schema 'test';
+select u.name from refs r
+left join users u
+on u.user_id = r.user_id
+where r.user_id = r.manager_id
+
+-- users who are manager and not manager for yourself
+select u.name from refs r
+left join users u
+on u.user_id = r.user_id
+where r.user_id <> r.manager_id
+and r.user_id in (
+select manager_id from refs
+)
+
+-- andrew query
+SELECT
+  u.user_id,
+  u.name
+FROM
+  refs r
+  LEFT JOIN refs r2 ON (r.manager_id = r2.user_id 
+AND r.manager_id = r2.manager_id)
+  JOIN users u ON (r.manager_id = u.user_id)
+WHERE
+  r2.manager_id is null
+GROUP BY
+  u.user_id;
+
+-- Ivan query
+SELECT users.user_id, name FROM users
+  INNER JOIN refs ON users.user_id = refs.manager_id
+GROUP BY users.user_id
+HAVING users.user_id IN (SELECT refs.user_id from refs WHERE refs.user_id <> refs.manager_id);

@@ -1,4 +1,4 @@
-package pattern.behavioral.command;
+package pattern.behavioral.command.database;
 
 public class DeleteCommand implements Command {
 	

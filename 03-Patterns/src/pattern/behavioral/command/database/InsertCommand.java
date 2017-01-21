@@ -1,4 +1,4 @@
-package pattern.behavioral.command;
+package pattern.behavioral.command.database;
 
 public class InsertCommand implements Command {
 	
@@ -12,4 +12,5 @@ public class InsertCommand implements Command {
 	public void execute() {
 		database.insert();
 	}
+
 }
