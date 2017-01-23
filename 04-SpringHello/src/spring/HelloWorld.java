@@ -1,4 +1,4 @@
-package by.grodno.vasili.spring;
+package spring;
 
 public class HelloWorld {
 	

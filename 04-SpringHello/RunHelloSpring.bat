@@ -1,0 +1,1 @@
+javac -classpath ".;libraries\*;" src\by\grodno\vasili\spring\SpringProgram.java
