@@ -17,7 +17,7 @@ public class HibernateApp {
 		System.out.println(context.containsBean("ds"));
 		System.out.println("huj");
 		
-//		UserRepository repository = context.getBean(UserRepository.class);
+		UserRepository repository = context.getBean(UserRepository.class);
 //		
 //		for (User user : repository.findAll()) {
 //			System.out.println(user.getName());

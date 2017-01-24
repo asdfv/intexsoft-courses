@@ -3,9 +3,11 @@ package hib;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
 public class Config {
@@ -19,5 +21,12 @@ public class Config {
 		dataSource.setPassword("root");
 
 		return dataSource;
+	}
+	
+	@Bean
+	public JpaVendorAdapter getAdapter() {
+		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+		adapter.setDatabase(Database.POSTGRESQL);
+		return adapter;
 	}
 }
