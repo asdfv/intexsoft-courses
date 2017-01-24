@@ -1,4 +1,4 @@
-[main] INFO org.springframework.context.annotation.AnnotationConfigApplicationContext - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4459eb14: startup date [Tue Jan 24 23:04:02 MSK 2017]; root of context hierarchy
+[main] INFO org.springframework.context.annotation.AnnotationConfigApplicationContext - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4459eb14: startup date [Tue Jan 24 23:12:43 MSK 2017]; root of context hierarchy
 Exception in thread "main" java.lang.NoSuchMethodError: org.springframework.data.jpa.repository.config.JpaRepositoryConfigExtension.registerIfNotAlreadyRegistered(Lorg/springframework/beans/factory/support/AbstractBeanDefinition;Lorg/springframework/beans/factory/support/BeanDefinitionRegistry;Ljava/lang/String;Ljava/lang/Object;)V
 	at org.springframework.data.jpa.repository.config.JpaRepositoryConfigExtension.registerBeansForRoot(JpaRepositoryConfigExtension.java:166)
 	at org.springframework.data.repository.config.RepositoryBeanDefinitionRegistrarSupport.registerBeanDefinitions(RepositoryBeanDefinitionRegistrarSupport.java:80)
