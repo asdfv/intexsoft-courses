@@ -18,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class Config {
 
 	@Bean
-	public DataSource getDataSource() {
+	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
@@ -28,8 +28,10 @@ public class Config {
 		return dataSource;
 	}
 	
+	
+	
 	@Bean
-	public JpaVendorAdapter getAdapter() {
+	public JpaVendorAdapter adapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.POSTGRESQL);
 		adapter.setShowSql(false);
@@ -47,7 +49,7 @@ public class Config {
 	}
 	
 	@Bean
-	public PlatformTransactionManager getTransactionManager() {
+	public PlatformTransactionManager transactionManager() {
 		PlatformTransactionManager ptm = new JpaTransactionManager();
 		return ptm;
 	} 
