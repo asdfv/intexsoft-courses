@@ -38,6 +38,7 @@ public class Config {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setDataSource(getDataSource());
 		factoryBean.setJpaVendorAdapter(getAdapter());
+		factoryBean.setPackagesToScan("hib");
 		return factoryBean;
 	}
 }
