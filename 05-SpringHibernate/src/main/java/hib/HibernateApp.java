@@ -10,7 +10,6 @@ public class HibernateApp {
 		
 		ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 		
-		System.out.println(context.containsBean("ds"));
 		System.out.println("Contex is loaded");
 		
 		UserRepository repository = context.getBean(UserRepository.class);
