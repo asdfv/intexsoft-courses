@@ -37,7 +37,7 @@ public class FindMissed {
         String curDate = new SimpleDateFormat("yyyy-MM-dd").format(curTime);
 
         // Variable declaration
-        String period = "2016-10-07";
+        String period = curDate;
 
         Connection con = null;
         PreparedStatement missedPrepS = null;
