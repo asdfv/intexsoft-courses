@@ -40,10 +40,10 @@ public class Config {
 	}
 	
 	@Bean
-	public LocalContainerEntityManagerFactoryBean geContainerEntityManagerFactoryBean(DataSource ds, JpaVendorAdapter jva) {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource, JpaVendorAdapter adapter) {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setDataSource(ds);
-		factoryBean.setJpaVendorAdapter(jva);
+		factoryBean.setDataSource(dataSource);
+		factoryBean.setJpaVendorAdapter(adapter);
 		factoryBean.setPackagesToScan("hib");
 		return factoryBean;
 	}
