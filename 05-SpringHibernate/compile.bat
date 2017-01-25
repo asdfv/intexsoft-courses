@@ -1,0 +1,1 @@
+javac -sourcepath src -d bin -classpath lib/* src/grodno/by/HibernateApp.java

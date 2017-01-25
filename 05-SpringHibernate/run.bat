@@ -1,0 +1,1 @@
+java -classpath bin;lib/* grodno/by/HibernateApp

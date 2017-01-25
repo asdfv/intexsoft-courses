@@ -17,6 +17,6 @@ public class HibernateApp {
 			System.out.println(user.getName());
 		}
 		
-		System.out.println("Call custom query for id = 5: \n" + repository.findUserByCustomId(5).getName());
+		System.out.println("\nCall custom query for id = 5: \n" + repository.findUserByCustomId(5).getName());
 	}
 }

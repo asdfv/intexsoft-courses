@@ -31,12 +31,12 @@ public class Config {
 	public JpaVendorAdapter adapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.POSTGRESQL);
-		adapter.setShowSql(true);
+		adapter.setShowSql(false);
 		adapter.setGenerateDdl(false);
 		return adapter;
 	}
-	@Bean(name = "entityManagerFactory")
-	public LocalContainerEntityManagerFactoryBean getEntityManagerFactory(DataSource dataSource, JpaVendorAdapter adapter) {
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter adapter) {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setJpaVendorAdapter(adapter);
