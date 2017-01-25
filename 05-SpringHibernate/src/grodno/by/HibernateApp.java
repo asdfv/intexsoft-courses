@@ -1,4 +1,4 @@
-package hib;
+package grodno.by;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -9,13 +9,14 @@ public class HibernateApp {
 		
 		ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 		
-		System.out.println("Contex is loaded");
-		
 		UserRepository repository = context.getBean(UserRepository.class);
 		
-//		for (User user : repository.findAll()) {
-//			System.out.println(user.getName());
-//		}
+
+		System.out.println("All users: ");
+		for (User user : repository.findAll()) {
+			System.out.println(user.getName());
+		}
 		
+		System.out.println("Call custom query for id = 5: \n" + repository.findUserByCustomId(5).getName());
 	}
 }
