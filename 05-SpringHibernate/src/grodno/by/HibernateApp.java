@@ -1,13 +1,13 @@
 package grodno.by;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class HibernateApp {
 	
 	public static void main(String[] args) {
 		
-		ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+		ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 		
 		UserRepository repository = context.getBean(UserRepository.class);
 		
@@ -18,5 +18,8 @@ public class HibernateApp {
 		}
 		
 		System.out.println("\nCall custom query for id = 5: \n" + repository.findUserByCustomId(5).getName());
+		
+		((ConfigurableApplicationContext)context).close();
 	}
+	
 }
