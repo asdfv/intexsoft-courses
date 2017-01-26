@@ -1,0 +1,1 @@
+javac -sourcepath src -d bin -classpath webapp/WEB-INF/lib/* src/rest/*

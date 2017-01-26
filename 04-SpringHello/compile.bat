@@ -1,0 +1,1 @@
+javac -sourcepath src -d bin -classpath libraries/* src/spring/SpringProgram.java
