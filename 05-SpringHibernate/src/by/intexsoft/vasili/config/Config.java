@@ -1,4 +1,6 @@
-package grodno.by;
+package by.intexsoft.vasili.config;
+
+import static org.springframework.orm.jpa.vendor.Database.POSTGRESQL;
 
 import javax.sql.DataSource;
 
@@ -9,12 +11,11 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "by.intexsoft.vasili.repository")
 public class Config {
 
 	@Bean
@@ -27,24 +28,28 @@ public class Config {
 
 		return dataSource;
 	}
+
 	@Bean
 	public JpaVendorAdapter adapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-		adapter.setDatabase(Database.POSTGRESQL);
+		adapter.setDatabase(POSTGRESQL);
 		adapter.setShowSql(false);
 		adapter.setGenerateDdl(false);
 		return adapter;
 	}
+
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter adapter) {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
+			JpaVendorAdapter adapter) {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setJpaVendorAdapter(adapter);
-		factoryBean.setPackagesToScan("grodno.by");
+		factoryBean.setPackagesToScan("by.intexsoft.vasili.model");
 		return factoryBean;
 	}
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
-    }
+
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		return new DataSourceTransactionManager(dataSource());
+	}
 }

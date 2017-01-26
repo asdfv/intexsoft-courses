@@ -2,10 +2,10 @@ package pattern.behavioral.command.texteditor;
 
 public class TextEditor {
 	
-	void addSymbol(){
+	void add(){
 		System.out.println("adding symbol");
 	}
-	void deleteSymbol(){
+	void delete(){
 		System.out.println("deleting symbol");
 	}
 }

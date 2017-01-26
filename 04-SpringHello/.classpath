@@ -7,5 +7,10 @@
 	<classpathentry kind="lib" path="E:/Cloud/Mail.Ru/Eclipse/intexsoft-courses/04-SpringHello/libraries/spring-beans-4.3.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/Cloud/Mail.Ru/Eclipse/intexsoft-courses/04-SpringHello/libraries/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="E:/Cloud/Mail.Ru/Eclipse/intexsoft-courses/04-SpringHello/libraries/spring-expression-4.3.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/git/intexsoft-courses/04-SpringHello/libraries/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/git/intexsoft-courses/04-SpringHello/libraries/spring-beans-4.3.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/git/intexsoft-courses/04-SpringHello/libraries/spring-context-4.3.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/git/intexsoft-courses/04-SpringHello/libraries/spring-core-4.3.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/git/intexsoft-courses/04-SpringHello/libraries/spring-expression-4.3.5.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

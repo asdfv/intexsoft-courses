@@ -6,7 +6,7 @@ public class DeleteCommand implements Command {
 
 	@Override
 	public void execute() {
-		textEditor.deleteSymbol();
+		textEditor.delete();
 	}
 
 	@Override

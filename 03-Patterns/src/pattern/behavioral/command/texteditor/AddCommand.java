@@ -6,7 +6,7 @@ public class AddCommand implements Command {
 
 	@Override
 	public void execute() {
-		textEditor.addSymbol();
+		textEditor.add();
 	}
 	
 	@Override
