@@ -30,6 +30,7 @@ INSERT INTO users (user_id, name) VALUES (1, 'Tatiana');
 INSERT INTO users (user_id, name) VALUES (2, 'Inna');
 INSERT INTO users (user_id, name) VALUES (3, 'Aleksandr');
 INSERT INTO users (user_id, name) VALUES (4, 'Igor');
+INSERT INTO users (user_id, name) VALUES (5, '5 User!');
 
 INSERT INTO refs (user_id, manager_id) VALUES (1, 4);
 INSERT INTO refs (user_id, manager_id) VALUES (2, 1);

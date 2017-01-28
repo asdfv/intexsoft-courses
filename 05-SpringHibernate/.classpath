@@ -18,7 +18,7 @@
 	<classpathentry kind="lib" path="lib/spring-context-4.3.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-core-4.3.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-data-commons-1.12.2.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring-data-jpa-1.10.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-data-jpa-1.10.2.RELEASE.jar" sourcepath="C:/Users/First/.m2/repository/org/springframework/data/spring-data-jpa/1.10.2.RELEASE/spring-data-jpa-1.10.2.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/spring-jdbc-4.3.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-orm-4.3.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-tx-4.3.5.RELEASE.jar"/>

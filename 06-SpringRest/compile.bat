@@ -1,1 +1,1 @@
-javac -sourcepath src -d bin -classpath webapp/WEB-INF/lib/* src/rest/*
+javac -sourcepath src -d  webapp/WEB-INF/classes -classpath webapp/WEB-INF/lib/* src/rest/*
