@@ -16,8 +16,10 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
+@EnableWebMvc
 @EnableJpaRepositories("by.intexsoft.vasili.userapp.repository")
 @ComponentScan("by.intexsoft.vasili.userapp")
 @PropertySource("classpath:resources/application.properties")	
