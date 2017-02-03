@@ -21,12 +21,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebMvc
 @EnableJpaRepositories("by.intexsoft.vasili.userapp.repository")
-@ComponentScan("by.intexsoft.vasili.userapp")
-@PropertySource("classpath:resources/application.properties")	
+@ComponentScan("by.intexsoft.vasili.userapp.service.impl")
+@PropertySource("classpath:resources/application.properties")
 public class Config {
-	
+
 	@Value("${datasource.driver-class-name}")
-    private String driverClassName;
+	private String driverClassName;
 	@Value("${datasource.url}")
 	private String url;
 	@Value("${datasource.username}")
@@ -35,7 +35,7 @@ public class Config {
 	private String password;
 	@Value("${datasource.schema}")
 	private String schema;
-	
+
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -47,6 +47,7 @@ public class Config {
 
 		return dataSource;
 	}
+
 	@Bean
 	public JpaVendorAdapter adapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
@@ -54,16 +55,19 @@ public class Config {
 		adapter.setShowSql(false);
 		return adapter;
 	}
+
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter adapter) {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
+			JpaVendorAdapter adapter) {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setJpaVendorAdapter(adapter);
 		factoryBean.setPackagesToScan("by.intexsoft.vasili.userapp.model");
 		return factoryBean;
 	}
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
-    }
+
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		return new DataSourceTransactionManager(dataSource());
+	}
 }
