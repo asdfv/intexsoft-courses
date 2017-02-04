@@ -36,6 +36,5 @@
 	<classpathentry kind="lib" path="src/webapp/WEB-INF/lib/spring-orm-4.3.5.RELEASE.jar" sourcepath="C:/Users/First/.m2/repository/org/springframework/spring-orm/4.3.5.RELEASE/spring-orm-4.3.5.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="src/webapp/WEB-INF/lib/spring-tx-4.3.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="src/webapp/WEB-INF/lib/spring-web-4.3.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="src/webapp/WEB-INF/lib/spring-webmvc-4.3.5.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

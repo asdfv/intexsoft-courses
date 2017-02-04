@@ -18,17 +18,24 @@ import by.intexsoft.vasili.userapp.service.impl.UserServiceImpl;
 @RequestMapping("/user")
 public class UserController {
 	
+	
 	public final static Logger logger = Logger.getLogger(UserController.class); 
 	
 	@Autowired
 	private UserServiceImpl userServiceImpl;
 	
+	/**
+	 * Get all {@link User}
+	 */	
 	@RequestMapping("/all")
 	List<User> getAllUsers(){
 		logger.info("Mapping user/all working");
 		return userServiceImpl.findAll();
 	}
 	
+	/**
+	 * Get {@link User} by id
+	 */	
 	@RequestMapping("/get")
 	User findUserById(@RequestParam int id){
 		logger.info("Mapping user/{id} working");

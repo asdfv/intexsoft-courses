@@ -12,6 +12,11 @@
 
 	<jpa:repositories base-package="by.intexsoft.vasili.userapp.repository" />
 
+<!-- 	<context-param> -->
+<!-- 		<param-name>propertiesLocation</param-name> -->
+<!-- 		<param-value>classpath:recources/application.properties</param-value> -->
+<!-- 	</context-param> -->
+
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
