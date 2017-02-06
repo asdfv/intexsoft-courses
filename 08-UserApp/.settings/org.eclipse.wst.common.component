@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="2.0">
-	<wb-module deploy-name="08-UserApp">
-		<property name="context-root" value="userapp"/>
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
-	</wb-module>
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="08-UserApp">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/resources"/>
+        <wb-resource deploy-path="/" source-path="/src/webapp"/>
+        <property name="java-output-path" value="/08-UserApp/bin"/>
+        <property name="context-root" value="08-UserApp"/>
+    </wb-module>
 </project-modules>
