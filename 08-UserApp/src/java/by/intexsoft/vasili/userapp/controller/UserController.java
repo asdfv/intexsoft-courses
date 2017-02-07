@@ -1,6 +1,7 @@
 package by.intexsoft.vasili.userapp.controller;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +17,7 @@ import by.intexsoft.vasili.userapp.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-	public final static Logger LOGGER = Logger.getLogger(UserController.class);
+	public final static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	private UserService userService;
@@ -29,7 +30,7 @@ public class UserController {
 
 	@RequestMapping(value = "/get", params = "id")
 	private User findUserById(@RequestParam("id") int id) {
-		LOGGER.info("Mapping user/{id} working");
+		LOGGER.info("Mapping user?id working");
 		User user = userService.findOne(id);
 		LOGGER.info(user.toString());
 		return user;
