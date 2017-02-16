@@ -1,4 +1,4 @@
-var usersURL = 'http://localhost:8080/userapp/user/all';
+var usersURL = 'http://localhost:8080/userapp/api/user/all';
 
 var usersButton = document.getElementById("usersButton");
 
