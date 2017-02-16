@@ -18,7 +18,7 @@ if (snake.tailLength >= size) {
     var massage = "The length of the snake must be smaller than size!";
     alert(massage);
     throw new Error(massage);
-}
+};
 genGridDivs = function(size) {
     var container = document.body;
     for (var row = 0; row < size; row++) {
@@ -33,7 +33,7 @@ genGridDivs = function(size) {
         }
         container.appendChild(line);
     }
-}
+};
 initSnakeBody = tailLength => {
     var snakeBody = [];
     for (var col = 0; col < tailLength; col++) {
