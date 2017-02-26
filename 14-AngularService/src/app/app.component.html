@@ -1,8 +1,7 @@
-<div>
-    <ul>
-        <li *ngFor="let user of users" (click)="onSelect(user)"> {{ user.name }} </li>
-    </ul>
-</div>
-<div>
-    <user-detail *ngIf="selectedUser" [user]="selectedUser"></user-detail>
-</div>
+<h1>{{ title }}</h1>
+<nav>
+    <a routerLink="/users">List of Users</a>
+    <a routerLink="/summary">Users Summary</a>
+</nav>
+<router-outlet></router-outlet>
+

@@ -1,22 +1,27 @@
 [
   {
     "id":1,
-    "name":"Tatiana JSON"
+    "name":"Tatiana JSON",
+    "address": "Grodno"
   },
   {
     "id":2,
-    "name":"Inna JSON"
+    "name":"Inna JSON",
+    "address": "Minsk"
   },
   {
     "id":3,
-    "name":"Aleksandr JSON"
+    "name":"Aleksandr JSON",
+    "address": "Mogilev"
   },
   {
     "id":4,
-    "name":"Igor JSON"
+    "name":"Igor JSON",
+    "address": "Gomel"
   },
   {
     "id":5,
-    "name":"5 user! JSON"
+    "name":"5 user! JSON",
+    "address": "Vitebsk"
   }
 ]
