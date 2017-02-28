@@ -3,10 +3,11 @@ apply plugin: 'war'
 
 war {
     baseName = 'userapp'
-	exclude("node_modules/")
-    exclude(".idea/")
-    exclude("package.json")
-    exclude("webpack.config.js")
+    include("bundles/")
+    include("WEB-INF/")
+    include("index.html")
+    include("src/**/*.html")
+    include("src/**/*.css")
 }
 
 sourceCompatibility = 1.8
