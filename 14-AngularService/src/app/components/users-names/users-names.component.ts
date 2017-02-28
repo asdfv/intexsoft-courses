@@ -5,8 +5,7 @@ import {User} from "../../user";
 @Component({
     selector: 'users-names',
     templateUrl: "/src/app/components/users-names/users-names.component.html",
-    styleUrls: ["src/app/components/users-names/users-names.component.css"],
-    providers: [UserService]
+    styleUrls: ["src/app/components/users-names/users-names.component.css"]
 })
 export class UsersNamesComponent implements OnInit {
 
@@ -19,11 +18,11 @@ export class UsersNamesComponent implements OnInit {
         this.userService.fetchData().subscribe(
             data => this.users = data
         );
-    }
+    };
 
     selectedUser: User;
 
     onSelect(user: User) {
         this.selectedUser = user;
-    }
+    };
 }

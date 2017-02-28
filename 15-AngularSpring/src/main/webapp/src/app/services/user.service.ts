@@ -6,8 +6,8 @@ import {User} from "../user";
 @Injectable()
 export class UserService {
 
-    // private dataUrl: string = "http://localhost:8080/userapp/api/user/all";
-    private dataUrl: string = "src/app/userdata.json";
+    private dataUrl: string = "api/user/all";
+    // private dataUrl: string = "src/app/userdata.json";
 
     constructor(private http: Http){};
 

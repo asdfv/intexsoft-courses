@@ -1,0 +1,12 @@
+/bin/
+*.war
+*.class
+/.gradle/
+/build/
+/src/main/webapp/.idea
+/src/main/webapp/bundles
+/src/main/webapp/node_modules
+*.map
+*.js
+!/src/main/webapp/webpack.config.js
+!/src/main/webapp/src/system.config.js

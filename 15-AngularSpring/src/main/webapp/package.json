@@ -6,7 +6,8 @@
     "tsc": "tsc -p src/",
     "tsc:w": "tsc -p src/ -w",
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "build": "webpack --progress && npm run lite"
+    "build-run": "webpack --progress && npm run lite",
+    "build": "tsc -p src/ && webpack --progress"
   },
   "dependencies": {
     "@angular/common": "~2.4.8",
