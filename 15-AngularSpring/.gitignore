@@ -1,3 +1,7 @@
+/.idea
+/15-AngularSpring.ipr
+/15-AngularSpring.iws
+*.iml
 /bin/
 .settings
 .classpath

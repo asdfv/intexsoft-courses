@@ -20,4 +20,10 @@ public class User extends AbstractPersistable<Integer> {
 	 */
 	@Column
 	public String name;
+	
+	/**
+	 * User address
+	 */	
+	@Column
+	public String address;
 }
