@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	compile 'ch.qos.logback:logback-classic:1.1.9'
+	compile 'org.codehaus.groovy:groovy-all:2.4.7'
+}
+
+jar {
+	from configurations.compile.collect { zipTree it }
+	manifest.attributes "Main-class": "by.intexsoft.test.HelloWorld1"
+}
+
+task runJar(type: Exec, dependsOn: jar) {
+	executable 'java'
+	args '-jar', "$jar.archivePath"
+}

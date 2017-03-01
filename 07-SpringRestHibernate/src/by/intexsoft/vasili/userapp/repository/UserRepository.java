@@ -13,6 +13,12 @@ import by.intexsoft.vasili.userapp.model.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
 	
+	/**
+	 * All {@link User}
+	 */	
 	List<User> findAll();
+	/**
+	 * {@link User} by id
+	 */	
 	User findById(int id);
 }

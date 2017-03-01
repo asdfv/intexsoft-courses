@@ -1,0 +1,37 @@
+{
+  "name": "user-app-angular-2",
+  "version": "1.0.0",
+  "scripts": {
+    "lite": "lite-server",
+    "tsc": "tsc -p src/",
+    "tsc:w": "tsc -p src/ -w",
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "build": "webpack --progress && npm run lite"
+  },
+  "dependencies": {
+    "@angular/common": "~2.4.8",
+    "@angular/compiler": "~2.4.8",
+    "@angular/core": "~2.4.8",
+    "@angular/forms": "~2.4.8",
+    "@angular/http": "~2.4.8",
+    "@angular/platform-browser": "~2.4.8",
+    "@angular/platform-browser-dynamic": "~2.4.8",
+    "@angular/router": "~3.4.8",
+    "@angular/upgrade": "~2.4.8",
+    "angular-in-memory-web-api": "~0.2.4",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.2.0",
+    "systemjs": "0.20.9",
+    "zone.js": "^0.7.2"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^7.0.5",
+    "concurrently": "^3.0.0",
+    "lite-server": "^2.2.2",
+    "ts-loader": "^2.0.1",
+    "typescript": "^2.0.3",
+    "webpack": "^2.2.0"
+  }
+}

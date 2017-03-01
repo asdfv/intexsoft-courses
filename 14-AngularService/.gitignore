@@ -1,0 +1,8 @@
+/node_modules
+/.idea
+*.map
+*.js
+./npm-debug.log*
+!/src/system.config.js
+!./webpack.config.js
+

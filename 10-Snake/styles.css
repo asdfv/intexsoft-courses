@@ -1,0 +1,27 @@
+.row {
+    margin: -5px;
+    display: block;
+}
+.cell {
+    border-radius: 3px;
+    border: 1px solid darkgreen;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    z-index: 20;
+}
+.snake {
+    border-radius: 3px;
+    background: darkgreen;
+    border: 1px solid darkgreen;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.food {
+    background: greenyellow;
+    border: 1px solid darkgreen;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}

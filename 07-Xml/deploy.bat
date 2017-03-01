@@ -1,1 +1,0 @@
-copy /y 06-SpringRest.war d:\apache-tomcat-8.5.11\webapps

@@ -1,3 +1,4 @@
 /webapp/WEB-INF/classes/
-
 /bin/
+*.war
+*.class
