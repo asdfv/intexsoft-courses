@@ -3,26 +3,26 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../user";
 
 @Component({
-    selector: 'users-names',
-    templateUrl: "src/app/components/users-names/users-names.component.html",
-    styleUrls: ["src/app/components/users-names/users-names.component.css"]
+    selector: "users-names",
+    template: require("./users-names.component.html"),
+    styles: [require("./users-names.component.css")]
 })
 export class UsersNamesComponent implements OnInit {
 
-    constructor(private userService: UserService) {
+    constructor(private userService:UserService) {
     };
 
-    users: User[];
+    users:User[];
 
-    ngOnInit(): void {
+    ngOnInit():void {
         this.userService.fetchData().subscribe(
             data => this.users = data
         );
     };
 
-    selectedUser: User;
+    selectedUser:User;
 
-    onSelect(user: User) {
+    onSelect(user:User) {
         this.selectedUser = user;
     };
 }

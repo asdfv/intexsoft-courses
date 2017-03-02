@@ -8,7 +8,15 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.ts$/, loader: 'ts-loader', exclude: /node_modules/}
+            {
+                test: /\.(html|css)$/,
+                loader: 'raw-loader'
+            },
+            {
+                test: /\.ts$/,
+                loaders: ['ts-loader', 'angular2-template-loader'],
+                exclude: /node_modules/
+            }
         ]
     },
     resolve: {
