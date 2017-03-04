@@ -1,0 +1,9 @@
+import {Component} from "@angular/core";
+
+@Component({
+    selector: "my-app",
+    template: require("./app.component.html")
+})
+export class AppComponent {
+    title: string = "User application with Angular 2.";
+}
