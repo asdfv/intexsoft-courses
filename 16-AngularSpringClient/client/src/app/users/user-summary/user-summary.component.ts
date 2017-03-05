@@ -3,7 +3,7 @@ import {UserService} from "../user.service";
 import {User} from "../user.model";
 
 @Component({
-    template: require("./user-summary.component.html")
+    templateUrl: "./user-summary.component.html"
 })
 export class UserSummaryComponent implements OnInit{
     constructor(private userService: UserService) {

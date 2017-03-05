@@ -11,13 +11,12 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.(html|css)$/,
-                loader: 'raw-loader',
+                test: /\.ts$/,
+                loaders: ['ts-loader', 'angular2-template-loader']
             },
             {
-                test: /\.ts$/,
-                loaders: ['ts-loader'],
-                exclude: /node_modules/,
+                test: /\.(html|css)$/,
+                loader: 'raw-loader',
             }
         ]
     },
@@ -26,6 +25,6 @@ module.exports = {
     },
     devServer: {
         port: 3000,
-        proxy: {'/userapp/api/*': 'http://localhost:8080/'}
+        proxy: {'/api/*': 'http://localhost:8080/userapp/'}
     }
 };

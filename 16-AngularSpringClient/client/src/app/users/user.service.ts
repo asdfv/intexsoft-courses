@@ -6,7 +6,7 @@ import {User} from "./user.model";
 @Injectable()
 export class UserService {
 
-    private dataUrl: string = "/userapp/api/user/all";
+    private dataUrl: string = "/api/user/all";
 
     constructor(private http: Http){};
 

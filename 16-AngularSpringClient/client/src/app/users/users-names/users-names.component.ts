@@ -4,8 +4,8 @@ import {User} from "../user.model";
 
 @Component({
     selector: "users-names",
-    template: require("./users-names.component.html"),
-    styles: [require("./users-names.component.css")]
+    templateUrl: "./users-names.component.html",
+    styleUrls: ["./users-names.component.css"]
 })
 export class UsersNamesComponent implements OnInit {
 

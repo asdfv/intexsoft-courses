@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'idea'
 
-task buildWeb(type:Exec) { 
+task buildWeb(type:Exec) {
 	description = 'Build webapp with webpack and npm for prodaction.'
   	workingDir = file('client/')
   	commandLine = ['cmd', '/c', 'npm run build:prod']
