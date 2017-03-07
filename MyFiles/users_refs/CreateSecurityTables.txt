@@ -1,0 +1,57 @@
+CREATE SCHEMA lodegro;
+
+SET SCHEMA 'lodegro';
+
+DROP TABLE IF EXISTS user CASCADE;
+
+CREATE TABLE user (
+    user_id serial,
+    username varchar(50) NOT NULL,
+    role integer DEFAULT 0,
+	email varchar(50) NOT NULL
+);
+
+DROP TABLE IF EXISTS role CASCADE;
+
+CREATE TABLE role (
+    role_id serial,
+    type varchar(16) NOT NULL
+);
+
+DROP TABLE IF EXISTS user_role CASCADE;
+
+CREATE TABLE user_role (
+    role_id integer NOT NULL,
+    user_id integer NOT NULL
+);
+
+ALTER TABLE lodegro.user
+  ADD CONSTRAINT pk_user PRIMARY KEY(user_id);
+
+ALTER TABLE lodegro.role
+  ADD CONSTRAINT pk_role PRIMARY KEY(role_id);
+
+ALTER TABLE lodegro.user_role
+  ADD CONSTRAINT fk0_user_role FOREIGN KEY (user_id)
+      REFERENCES lodegro.user (user_id);
+	  
+ALTER TABLE lodegro.user_role
+  ADD CONSTRAINT fk1_user_role FOREIGN KEY (role_id)
+      REFERENCES lodegro.role (role_id);
+
+INSERT INTO user (user_id, username, email) VALUES (1, 'admin', 'admin@test.by');
+INSERT INTO user (user_id, username, email) VALUES (2, 'user1', 'user1@test.by');
+INSERT INTO user (user_id, username, email) VALUES (3, 'user2', 'user2@test.by');
+INSERT INTO user (user_id, username, email) VALUES (4, 'user3', 'user3@test.by');
+INSERT INTO user (user_id, username, email) VALUES (5, 'redactor', 'redactor@test.by');
+
+INSERT INTO role (role_id, type) VALUES (0, 'user');
+INSERT INTO role (role_id, type) VALUES (1, 'admin');
+INSERT INTO role (role_id, type) VALUES (2, 'redactor');
+
+INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 0);
+INSERT INTO user_role (user_id, role_id) VALUES (3, 0);
+INSERT INTO user_role (user_id, role_id) VALUES (4, 0);
+INSERT INTO user_role (user_id, role_id) VALUES (5, 2);
