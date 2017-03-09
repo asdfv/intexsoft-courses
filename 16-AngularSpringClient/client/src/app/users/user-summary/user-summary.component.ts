@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {UserService} from "../user.service";
-import {User} from "../user.model";
+import UserService from "../user.service";
+import User from "../user.model";
 
 @Component({
     templateUrl: "./user-summary.component.html"
@@ -11,7 +11,7 @@ export class UserSummaryComponent implements OnInit{
     users: User[];
     ngOnInit(): void {
         this.userService.fetchData().subscribe(
-            data => this.users = data
+            (data: User[]) => this.users = data
         );
     }
 }

@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import "../../../node_modules/rxjs/add/operator/map";
-import {User} from "./user.model";
+import User from "./user.model";
 
 @Injectable()
-export class UserService {
+export default class UserService {
 
     private dataUrl: string = "/api/user/all";
 

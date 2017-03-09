@@ -7,7 +7,7 @@ import {UsersNamesComponent} from "./users/users-names/users-names.component";
 import {APP_ROUTS} from "./app.routs";
 import {UserSummaryComponent} from "./users/user-summary/user-summary.component";
 import {RouterModule} from "@angular/router";
-import {UserService} from "./users/user.service";
+import UserService from "./users/user.service";
 
 @NgModule({
     imports: [
