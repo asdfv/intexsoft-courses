@@ -28,13 +28,15 @@ module.exports = {
         port: 3000,
         proxy: {'/api/*': 'http://localhost:8080/userapp/'}
     },
-    plugins: [new HtmlWebpackPlugin({
-        template: './src/index.template.html',
-        chunksSortMode: function (chunk1, chunk2) { // sort function
-            var orders = ['polyfill', 'app']; // Necessary order
-            var order1 = orders.indexOf(chunk1.names[0]);
-            var order2 = orders.indexOf(chunk2.names[0]);
-            return order1 - order2;
-        }
-    })]
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.template.html',
+            chunksSortMode: function (chunk1, chunk2) { // sort function
+                var orders = ['polyfill', 'app']; // Necessary order
+                var order1 = orders.indexOf(chunk1.names[0]);
+                var order2 = orders.indexOf(chunk2.names[0]);
+                return order1 - order2;
+            }
+        })
+    ]
 };
