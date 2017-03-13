@@ -18,13 +18,9 @@ module.exports = {
     },
 
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './index.template.html',
 
-        }),
         new CommonsChunkPlugin({
-            names: ['app3'],
-            minChunks: 2
+            names: ['app3']
         })
     ]
 };

@@ -1,4 +1,5 @@
-var varIn2 = require('./1')
+import "reflect-metadata";
+import "core-js";
 
 function fuFrom2() {
     alert("1")

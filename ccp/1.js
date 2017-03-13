@@ -1,6 +1,4 @@
-module.exports = {
-	'nameFrom1': 'app1'
-}
+import "core-js";
 
 function fuFrom1() {
 	alert("1")

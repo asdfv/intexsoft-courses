@@ -1,4 +1,4 @@
-var varIn3 = require('./1')
+import "zone.js/dist/zone";
 
 function fuFrom3() {
     alert("1")

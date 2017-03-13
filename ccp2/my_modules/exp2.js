@@ -1,0 +1,1 @@
+export const exp2 = 'exp2';
