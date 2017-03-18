@@ -3,9 +3,9 @@ apply plugin: 'war'
 apply plugin: 'idea'
 
 //task buildWeb(type:Exec) {
-//	description = 'Build webapp with webpack and npm for prodaction.'
+//	description = 'Build webapp with webpack and npm.'
 //  	workingDir = file('client/')
-//  	commandLine = ['cmd', '/c', 'npm run build:prod']
+//  	commandLine = ['cmd', '/c', 'npm run build']
 //}
 //
 //task npmInstall(type:Exec) {
@@ -19,7 +19,7 @@ task deploy(type:Exec) {
 }
 
 war {
-    baseName = 'userapp'
+    baseName = 'lodegro'
 //    from('/client') {
 //        include 'index.html'
 //        include 'bundles/'

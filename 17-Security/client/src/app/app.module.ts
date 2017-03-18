@@ -2,27 +2,39 @@ import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
-import {UserIdComponent} from "./users/user-id/user-id.component";
-import {UsersNamesComponent} from "./users/users-names/users-names.component";
 import {APP_ROUTS} from "./app.routs";
-import {UserSummaryComponent} from "./users/user-summary/user-summary.component";
 import {RouterModule} from "@angular/router";
-import {UserService} from "./users/user.service";
+import {LoginComponent} from "./login/login.component";
+import {FormsModule} from "@angular/forms";
+import {AuthenticationGuard} from "./security/authentication.guard";
+import {AuthenticationService} from "./security/authentication.service";
+import {HomeComponent} from "./news/home/home.component";
+import {AdminComponent} from "./news/admin/admin.component";
+import {RedactorComponent} from "./news/redactor/redactor.component";
+import {CanViewService} from "./news/service/can-view.service";
+import NewsService from "./news/service/news.service.ts";
 
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         HttpModule,
         RouterModule.forRoot(APP_ROUTS)
     ],
     declarations: [
         AppComponent,
-        UsersNamesComponent,
-        UserIdComponent,
-        UserSummaryComponent
+        LoginComponent,
+        HomeComponent,
+        AdminComponent,
+        RedactorComponent
     ],
     bootstrap: [AppComponent],
-    providers: [UserService]
+    providers: [
+        AuthenticationGuard,
+        AuthenticationService,
+        NewsService,
+        CanViewService
+    ]
 })
 export class AppModule {
 

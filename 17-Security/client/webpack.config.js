@@ -1,6 +1,7 @@
-var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+
     entry: {
         app: './src/main.ts',
         polyfill: './src/polyfill.ts'
@@ -16,7 +17,7 @@ module.exports = {
             },
             {
                 test: /\.(html|css)$/,
-                loader: 'raw-loader',
+                loader: 'raw-loader'
             }
         ]
     },
@@ -25,6 +26,20 @@ module.exports = {
     },
     devServer: {
         port: 3000,
-        proxy: {'/api/*': 'http://localhost:8080/userapp/'}
-    }
+        proxy: {
+            '/api/*': 'http://localhost:8080/lodegro/',
+            '/login': 'http://localhost:8080/lodegro/'
+        }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.template.html',
+            chunksSortMode: function (chunk1, chunk2) { // sort function
+                var orders = ['polyfill', 'app']; // Necessary order
+                var order1 = orders.indexOf(chunk1.names[0]);
+                var order2 = orders.indexOf(chunk2.names[0]);
+                return order1 - order2;
+            }
+        })
+    ]
 };
