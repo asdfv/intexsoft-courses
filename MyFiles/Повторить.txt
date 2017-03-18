@@ -1,0 +1,8 @@
+типы сервисов, singleton, prototype
+for then add catch and error
+http://www.seostella.com/ru/article/2012/02/12/ispolzovanie-annotacii-autowired-v-spring-3.html - autowire from constructor
+local storage???
+для сравнения массивов lodash
+над контроллерами аннотация безопасности
+.equals - first 100% not null
+flyway

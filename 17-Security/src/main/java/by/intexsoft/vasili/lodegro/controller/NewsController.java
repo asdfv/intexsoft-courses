@@ -23,6 +23,7 @@ public class NewsController {
 	@Autowired
 	private NewsService userService;
 
+
 	@RequestMapping("/all")
 	private ResponseEntity<Iterable<News>> searchAllUsers() {
 		LOGGER.info("Mapping news/all works");
