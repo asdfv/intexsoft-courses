@@ -1,23 +1,17 @@
 package by.intexsoft.vasili.lodegro.model;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 import javax.persistence.*;
 
 /**
  * model for Users table
  */
-@Entity
 @Table
-public class News {
+@Entity
+public class News extends AbstractPersistable<Integer> {
 
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Id
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "news_id")
-	public long id;
 
 	/**
 	 * News title

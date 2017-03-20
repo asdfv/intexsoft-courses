@@ -1,5 +1,6 @@
 package by.intexsoft.vasili.lodegro.config;
 
+import by.intexsoft.vasili.lodegro.security.CustomUserDetailService;
 import by.intexsoft.vasili.lodegro.security.JWTAuthenticationFilter;
 import by.intexsoft.vasili.lodegro.security.JWTLoginFilter;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    CustomUserDetailService customUserDetailService = new CustomUserDetailService();
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -24,8 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/api/news/all").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers("/api/news/admin").hasRole("ADMIN")
-                .antMatchers("/api/news/redactor").hasRole("REDACTOR")
+                .antMatchers("/api/news/admin").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/api/news/redactor").hasAuthority("ROLE_REDACTOR")
 
                 .anyRequest().authenticated()
                 .and()
@@ -38,7 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // Create a default account
-        auth.inMemoryAuthentication().withUser("adm").password("a").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("red").password("a").roles("REDACTOR");
+        auth.userDetailsService(customUserDetailService);
     }
 }

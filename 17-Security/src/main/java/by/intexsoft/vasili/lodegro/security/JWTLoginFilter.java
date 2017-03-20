@@ -15,35 +15,38 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     public final static Logger LOGGER = LoggerFactory.getLogger(JWTLoginFilter.class);
 
-    private TokenAuthenticationService tokenAuthenticationService;
-
-    public JWTLoginFilter(String url, AuthenticationManager authenticationManager) {
+    public JWTLoginFilter(String url, AuthenticationManager authManager) {
         super(new AntPathRequestMatcher(url));
+        setAuthenticationManager(authManager);
         LOGGER.info("JWTLoginFilter triggered");
-        setAuthenticationManager(authenticationManager);
-        tokenAuthenticationService = new TokenAuthenticationService();
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
+    public Authentication attemptAuthentication(
+            HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException, IOException, ServletException {
-        LOGGER.info("Attempt authentication");
-        AccountCredentials credentials = new ObjectMapper().readValue(httpServletRequest.getInputStream(), AccountCredentials.class);
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword());
-        return getAuthenticationManager().authenticate(token);
+        AccountCredentials creds = new ObjectMapper()
+                .readValue(req.getInputStream(), AccountCredentials.class);
+        return getAuthenticationManager().authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        creds.getUsername(),
+                        creds.getPassword(),
+                        Collections.emptyList()
+                )
+        );
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication)
-            throws IOException, ServletException {
-        String name = authentication.getName();
-        LOGGER.info(name + " successfully login");
-
-        tokenAuthenticationService.addAuthentication(response, name);
+    protected void successfulAuthentication(
+            HttpServletRequest req,
+            HttpServletResponse res, FilterChain chain,
+            Authentication auth) throws IOException, ServletException {
+        TokenAuthenticationService.addAuthentication(res, auth.getName());
     }
 }

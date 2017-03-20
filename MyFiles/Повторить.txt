@@ -6,3 +6,4 @@ local storage???
 над контроллерами аннотация безопасности
 .equals - first 100% not null
 flyway
+hasRole vs hasAuthority
