@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
-import static java.util.Collections.emptyList;
-
 class TokenAuthenticationService {
 
     public final static Logger LOGGER = LoggerFactory.getLogger(TokenAuthenticationService.class);
+
+    private static CustomUserDetailService customUserDetailService = new CustomUserDetailService();
 
     static final long EXPIRATIONTIME = 1000 * 60 * 60 * 24 * 10; // 10 days
     static final String SECRET = "ThisIsASecret";
@@ -44,7 +44,11 @@ class TokenAuthenticationService {
                     .getSubject();
             LOGGER.info("User " + username + " try to get secure...");
             return username != null ?
-                    new UsernamePasswordAuthenticationToken(username, null, emptyList()) :
+                    new UsernamePasswordAuthenticationToken(
+                            username,
+                            null,
+                            customUserDetailService.loadUserByUsername("adm").getAuthorities()
+                    ) :
                     null;
         }
         return null;
