@@ -27,6 +27,7 @@ war {
 }
 
 //war.dependsOn buildWeb
+deploy.dependsOn build
 
 sourceCompatibility = 1.8
 

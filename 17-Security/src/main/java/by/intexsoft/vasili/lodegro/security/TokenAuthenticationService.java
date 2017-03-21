@@ -22,7 +22,7 @@ class TokenAuthenticationService {
     static final String TOKEN_PREFIX = "Bearer";
     static final String HEADER_STRING = "Authorization";
 
-    static void addAuthentication(HttpServletResponse response, String username) {
+    public void addAuthentication(HttpServletResponse response, String username) {
         // We generate a token now.
         String JWT = Jwts.builder()
                 .setSubject(username)
@@ -33,7 +33,7 @@ class TokenAuthenticationService {
         LOGGER.info(username + " get a token: " + JWT);
     }
 
-    static Authentication getAuthentication(HttpServletRequest request) {
+    public Authentication getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(HEADER_STRING);
         if (token != null) {
             // parse the token.

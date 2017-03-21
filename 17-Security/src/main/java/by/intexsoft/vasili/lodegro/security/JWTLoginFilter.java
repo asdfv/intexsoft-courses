@@ -19,6 +19,9 @@ import java.util.Collections;
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
+    private TokenAuthenticationService tokenAuthenticationService = new TokenAuthenticationService();
+
+
     public final static Logger LOGGER = LoggerFactory.getLogger(JWTLoginFilter.class);
 
     public JWTLoginFilter(String url, AuthenticationManager authManager) {
@@ -47,6 +50,6 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
             HttpServletRequest req,
             HttpServletResponse res, FilterChain chain,
             Authentication auth) throws IOException, ServletException {
-        TokenAuthenticationService.addAuthentication(res, auth.getName());
+        tokenAuthenticationService.addAuthentication(res, auth.getName());
     }
 }
