@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
  * Application config
  */
 @Configuration
-@ComponentScan("by.intexsoft.vasili.lodegro.service")
+@ComponentScan(basePackages = {
+        "by.intexsoft.vasili.lodegro.service",
+        "by.intexsoft.vasili.lodegro.security"
+})
 public class AppConfig {
 }

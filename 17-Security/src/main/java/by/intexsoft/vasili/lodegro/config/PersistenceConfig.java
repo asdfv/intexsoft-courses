@@ -20,7 +20,10 @@ import static org.springframework.orm.jpa.vendor.Database.POSTGRESQL;
  * Datasource configuration
  */
 @Configuration
-@EnableJpaRepositories("by.intexsoft.vasili.lodegro.repository")
+@EnableJpaRepositories(basePackages = {
+        "by.intexsoft.vasili.lodegro.repository",
+        "by.intexsoft.vasili.lodegro.security"
+})
 @PropertySource("classpath:application.properties")
 public class PersistenceConfig {
 
@@ -51,7 +54,7 @@ public class PersistenceConfig {
     public JpaVendorAdapter adapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(POSTGRESQL);
-        adapter.setShowSql(false);
+        adapter.setShowSql(true);
         return adapter;
     }
 
@@ -61,7 +64,7 @@ public class PersistenceConfig {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setJpaVendorAdapter(adapter);
-        factoryBean.setPackagesToScan("by.intexsoft.vasili.lodegro.model");
+        factoryBean.setPackagesToScan("by.intexsoft.vasili.lodegro.model", "by.intexsoft.vasili.lodegro.security.model");
         return factoryBean;
     }
 

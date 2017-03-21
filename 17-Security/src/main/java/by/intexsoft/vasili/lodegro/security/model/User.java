@@ -1,24 +1,34 @@
-package by.intexsoft.vasili.lodegro.security;
+package by.intexsoft.vasili.lodegro.security.model;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
+import javax.persistence.*;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
-public class User implements UserDetails {
+@Entity
+@Table(name = "users")
+public class User extends AbstractPersistable<Integer> implements UserDetails {
 
-    private String username;
-    private String password;
-    private Set<Authority> authorities;
+    @Column
+    public String username;
 
-    public User(String username, String password) {
-        this.authorities = new HashSet<>(Arrays.asList(new Authority()));
-        this.username = username;
-        this.password = password;
-    }
+    @Column
+    public String password;
+
+    @Column
+    public boolean enabled;
+
+    @ManyToMany(targetEntity = Authority.class, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_authority",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_id")}
+    )
+    public Set<Authority> authorities;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -52,6 +62,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.enabled;
     }
 }

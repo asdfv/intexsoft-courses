@@ -4,8 +4,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +17,8 @@ class TokenAuthenticationService {
 
     public final static Logger LOGGER = LoggerFactory.getLogger(TokenAuthenticationService.class);
 
-    private static CustomUserDetailService customUserDetailService = new CustomUserDetailService();
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     static final long EXPIRATIONTIME = 1000 * 60 * 60 * 24 * 10; // 10 days
     static final String SECRET = "ThisIsASecret";
@@ -43,13 +46,25 @@ class TokenAuthenticationService {
                     .getBody()
                     .getSubject();
             LOGGER.info("User " + username + " try to get secure...");
-            return username != null ?
-                    new UsernamePasswordAuthenticationToken(
-                            username,
-                            null,
-                            customUserDetailService.loadUserByUsername("adm").getAuthorities()
-                    ) :
-                    null;
+
+            if (username != null) {
+                Authentication auth = new UsernamePasswordAuthenticationToken(
+                        username,
+                        null,
+                        userDetailsService.loadUserByUsername(username).getAuthorities());
+                LOGGER.info("Auth is: " + auth.getDetails());
+
+                return auth;
+            }
+            LOGGER.info("Username is NULL");
+            return null;
+//            return username != null ?
+//                    new UsernamePasswordAuthenticationToken(
+//                            username,
+//                            null,
+//                            userDetailsService.loadUserByUsername(username).getAuthorities()
+//                    ) :
+//                    null;
         }
         return null;
     }
