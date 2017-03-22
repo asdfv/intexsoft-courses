@@ -1,6 +1,5 @@
 package by.intexsoft.vasili.lodegro.security.service;
 
-import by.intexsoft.vasili.lodegro.security.controller.UserController;
 import by.intexsoft.vasili.lodegro.security.model.CustomUserDetails;
 import by.intexsoft.vasili.lodegro.security.model.User;
 import by.intexsoft.vasili.lodegro.security.repository.UserRepository;
@@ -15,17 +14,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomUserDetailService.class);
+
+    final
+    UserRepository userRepository;
 
     @Autowired
-    UserRepository userRepository;
+    public CustomUserDetailService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LOGGER.info("Try to get from db user: " + username);
-        User user = userRepository.findByUsername(username);
-        LOGGER.info("Found user: " + username);
-        UserDetails userDetails = new CustomUserDetails(user);
-        return userDetails;
+        try {
+            User user = userRepository.findByUsername(username);
+            UserDetails userDetails = new CustomUserDetails(user);
+            LOGGER.info("UserDetails auth-s: " + userDetails.getAuthorities());
+            return userDetails;
+        } catch (Exception e) {
+            LOGGER.info("getting user error. StackTrace: \n");
+            e.printStackTrace();
+        }
+        return null;
     }
 }

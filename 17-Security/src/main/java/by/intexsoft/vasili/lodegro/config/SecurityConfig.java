@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable() // disable csrf for our requests.
             .authorizeRequests()
-                .antMatchers("/api/news/all", "/api/user/**").permitAll()
+                .antMatchers("/api/news/all", "/api/user/**", "/print").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers("/api/news/admin").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/api/news/redactor").hasAuthority("ROLE_REDACTOR")
@@ -46,7 +46,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // Create a default account
         auth.userDetailsService(userDetailsService);
     }
 }
