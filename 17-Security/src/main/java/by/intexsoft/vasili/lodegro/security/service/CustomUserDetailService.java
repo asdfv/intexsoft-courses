@@ -1,4 +1,4 @@
-package by.intexsoft.vasili.lodegro.security;
+package by.intexsoft.vasili.lodegro.security.service;
 
 import by.intexsoft.vasili.lodegro.security.controller.UserController;
 import by.intexsoft.vasili.lodegro.security.model.CustomUserDetails;

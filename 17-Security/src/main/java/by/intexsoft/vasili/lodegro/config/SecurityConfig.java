@@ -1,8 +1,8 @@
 package by.intexsoft.vasili.lodegro.config;
 
-import by.intexsoft.vasili.lodegro.security.CustomUserDetailService;
-import by.intexsoft.vasili.lodegro.security.JWTAuthenticationFilter;
-import by.intexsoft.vasili.lodegro.security.JWTLoginFilter;
+import by.intexsoft.vasili.lodegro.security.service.CustomUserDetailService;
+import by.intexsoft.vasili.lodegro.security.filter.JWTAuthenticationFilter;
+import by.intexsoft.vasili.lodegro.security.filter.JWTLoginFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

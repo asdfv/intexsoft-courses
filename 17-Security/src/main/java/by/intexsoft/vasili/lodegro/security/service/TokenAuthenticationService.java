@@ -1,4 +1,4 @@
-package by.intexsoft.vasili.lodegro.security;
+package by.intexsoft.vasili.lodegro.security.service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
-class TokenAuthenticationService {
+public class TokenAuthenticationService {
 
     public final static Logger LOGGER = LoggerFactory.getLogger(TokenAuthenticationService.class);
 

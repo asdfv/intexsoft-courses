@@ -1,5 +1,7 @@
-package by.intexsoft.vasili.lodegro.security;
+package by.intexsoft.vasili.lodegro.security.filter;
 
+import by.intexsoft.vasili.lodegro.security.model.AccountCredentials;
+import by.intexsoft.vasili.lodegro.security.service.TokenAuthenticationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

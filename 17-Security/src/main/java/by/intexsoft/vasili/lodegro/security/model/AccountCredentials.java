@@ -1,4 +1,4 @@
-package by.intexsoft.vasili.lodegro.security;
+package by.intexsoft.vasili.lodegro.security.model;
 
 /**
  * News credentials model

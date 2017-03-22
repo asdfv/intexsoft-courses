@@ -22,7 +22,7 @@ import static org.springframework.orm.jpa.vendor.Database.POSTGRESQL;
 @Configuration
 @EnableJpaRepositories(basePackages = {
         "by.intexsoft.vasili.lodegro.repository",
-        "by.intexsoft.vasili.lodegro.security"
+        "by.intexsoft.vasili.lodegro.security.repository"
 })
 @PropertySource("classpath:application.properties")
 public class PersistenceConfig {

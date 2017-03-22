@@ -21,7 +21,7 @@ public class UserController {
 
     @RequestMapping("/{username}")
     public ResponseEntity<?> loadUser(@PathVariable String username) {
-        LOGGER.info("Start loadUser: " + username);
+        LOGGER.info("loading User: " + username);
         try {
             return new ResponseEntity<>(userRepository.findByUsername(username), HttpStatus.OK);
         } catch (NullPointerException e) {
