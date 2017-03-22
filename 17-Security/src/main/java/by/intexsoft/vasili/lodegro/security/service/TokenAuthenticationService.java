@@ -12,6 +12,8 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TokenAuthenticationService {
 
@@ -22,22 +24,16 @@ public class TokenAuthenticationService {
     static final String TOKEN_PREFIX = "Bearer";
     static final String HEADER_STRING = "Authorization";
 
-//    Is null... But why???
-//    @Autowired
-//    SecurityContextHolder securityContextHolder;
-//
-//    @Autowired
-//    UserDetailsService userDetailsService;
+    public void addAuthentication(HttpServletResponse response, Authentication auth) {
 
-    public void addAuthentication(HttpServletResponse response, String username) {
+        String username = auth.getName();
+        Set<String> authorities = AuthorityUtils.authorityListToSet(auth.getAuthorities());
 
-//        LOGGER.info("Before userDetailsService.loadUserByUsername");
-//        CustomUserDetails customUser = (CustomUserDetails) userDetailsService.loadUserByUsername(username);
-//        LOGGER.info("After userDetailsService.loadUserByUsername: " + customUser.getPassword());
+        LOGGER.info("authorities: " + authorities.toString());
 
         // We generate a token now.
         Claims claims = Jwts.claims().setSubject(username);
-        claims.put("scopes", AuthorityUtils.createAuthorityList("ROLE_ADMIN"));
+        claims.put("scopes", authorities);
         LOGGER.info("Claims: " + claims.toString());
         String JWT = Jwts.builder()
                 .setClaims(claims)
@@ -61,7 +57,13 @@ public class TokenAuthenticationService {
                     .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
                     .getBody()
                     .getSubject();
-            LOGGER.info("User " + username + " try to get secure...");
+
+            Set<String> authorities = Jwts.parser()
+                    .setSigningKey(SECRET).parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
+                    .getBody().get("scopes",  HashSet.class);
+
+
+            LOGGER.info("User " + username + " with authorities: " + authorities.toString());
 
             if (username != null) {
                 Authentication auth = new UsernamePasswordAuthenticationToken(

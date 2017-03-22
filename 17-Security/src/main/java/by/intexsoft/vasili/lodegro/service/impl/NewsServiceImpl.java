@@ -14,9 +14,14 @@ import by.intexsoft.vasili.lodegro.service.NewsService;
 @Service
 public class NewsServiceImpl implements NewsService {
 
-	@Autowired
+	final
 	NewsRepository newsRepository;
-	
+
+	@Autowired
+	public NewsServiceImpl(NewsRepository newsRepository) {
+		this.newsRepository = newsRepository;
+	}
+
 	@Override
 	public News findOne(int id) {
 		return newsRepository.findOne(id);
