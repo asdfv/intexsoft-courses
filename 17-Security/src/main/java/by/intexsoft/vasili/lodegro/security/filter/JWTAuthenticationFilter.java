@@ -12,10 +12,23 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * This filter works before {@link org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter}
+ * and check token from the request in {@link TokenAuthenticationService}. If token is correct - set authentication to
+ * {@link SecurityContextHolder}
+ */
 public class JWTAuthenticationFilter extends GenericFilterBean {
 
     private TokenAuthenticationService tokenAuthenticationService = new TokenAuthenticationService();
 
+    /**
+     * @see GenericFilterBean
+     * @param request
+     * @param response
+     * @param filterChain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         Authentication authentication = tokenAuthenticationService.getAuthentication((HttpServletRequest)request);

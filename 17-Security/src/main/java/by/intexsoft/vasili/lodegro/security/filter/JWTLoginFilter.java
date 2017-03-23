@@ -3,8 +3,6 @@ package by.intexsoft.vasili.lodegro.security.filter;
 import by.intexsoft.vasili.lodegro.security.model.AccountCredentials;
 import by.intexsoft.vasili.lodegro.security.service.TokenAuthenticationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,19 +17,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
+/**
+ * This filter catch requests to secure resources and authenticate
+ * depending on the contents of the token
+ */
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     private TokenAuthenticationService tokenAuthenticationService = new TokenAuthenticationService();
 
-
-    public final static Logger LOGGER = LoggerFactory.getLogger(JWTLoginFilter.class);
-
+    /**
+     * Constructor
+     * @param url
+     * @param authManager
+     */
     public JWTLoginFilter(String url, AuthenticationManager authManager) {
         super(new AntPathRequestMatcher(url));
         setAuthenticationManager(authManager);
-        LOGGER.info("JWTLoginFilter triggered");
     }
 
+    /**
+     * @see AbstractAuthenticationProcessingFilter
+     * @param req
+     * @param res
+     * @return
+     * @throws AuthenticationException
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public Authentication attemptAuthentication(
             HttpServletRequest req, HttpServletResponse res)
@@ -47,6 +59,15 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
         );
     }
 
+    /**
+     * @see AbstractAuthenticationProcessingFilter
+     * @param req
+     * @param res
+     * @param chain
+     * @param auth
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     protected void successfulAuthentication(
             HttpServletRequest req,

@@ -5,6 +5,9 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
+/**
+ * Model for authority table
+ */
 @Table
 @Entity
 public class Authority implements GrantedAuthority {
@@ -15,11 +18,17 @@ public class Authority implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    /**
+     * Role name
+     */
     @Column
     public String name;
 
-    @JsonIgnore
+    /**
+     * @see  GrantedAuthority
+     */
     @Override
+    @JsonIgnore
     public String getAuthority() {
         return this.name;
     }

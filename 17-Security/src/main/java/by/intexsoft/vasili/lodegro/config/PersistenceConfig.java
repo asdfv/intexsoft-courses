@@ -38,6 +38,10 @@ public class PersistenceConfig {
     @Value("${datasource.schema}")
     private String schema;
 
+    /**
+     * Connection settings
+     * @return DataSource
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -50,24 +54,41 @@ public class PersistenceConfig {
         return dataSource;
     }
 
+    /**
+     * JPA provider
+     * @return JpaVendorAdapter
+     */
     @Bean
     public JpaVendorAdapter adapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(POSTGRESQL);
-        adapter.setShowSql(true);
+        adapter.setShowSql(false);
         return adapter;
     }
 
+    /**
+     * Manager for entities
+     * @param dataSource
+     * @param adapter
+     * @return LocalContainerEntityManagerFactoryBean
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
                                                                        JpaVendorAdapter adapter) {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setJpaVendorAdapter(adapter);
-        factoryBean.setPackagesToScan("by.intexsoft.vasili.lodegro.model", "by.intexsoft.vasili.lodegro.security.model");
+        factoryBean.setPackagesToScan(
+                "by.intexsoft.vasili.lodegro.model",
+                "by.intexsoft.vasili.lodegro.security.model"
+        );
         return factoryBean;
     }
 
+    /**
+     * Transaction support
+     * @return PlatformTransactionManager
+     */
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());

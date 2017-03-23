@@ -11,11 +11,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {
-        "by.intexsoft.vasili.lodegro.controller",
-        "by.intexsoft.vasili.lodegro.security.controller"
-})
+@ComponentScan("by.intexsoft.vasili.lodegro.controller")
 public class WebConfig extends WebMvcConfigurerAdapter {
+
+    /**
+     * Enable using {@link DefaultServletHandlerConfigurer} for load index.html
+     * bypass {@link org.springframework.web.servlet.DispatcherServlet}
+     */
     @Override
     public void configureDefaultServletHandling(
             DefaultServletHandlerConfigurer configurer) {
