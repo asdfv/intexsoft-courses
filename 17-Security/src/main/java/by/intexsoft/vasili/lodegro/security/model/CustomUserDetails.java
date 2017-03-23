@@ -1,5 +1,6 @@
 package by.intexsoft.vasili.lodegro.security.model;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +15,7 @@ public class CustomUserDetails extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList("ROLE_ADMIN");
+        return AuthorityUtils.createAuthorityList(StringUtils.join(this.authorities, ','));
     }
 
     @Override

@@ -1,19 +1,24 @@
 package by.intexsoft.vasili.lodegro.security.service;
 
+import by.intexsoft.vasili.lodegro.security.model.Authority;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TokenAuthenticationService {
 
@@ -27,12 +32,14 @@ public class TokenAuthenticationService {
     public void addAuthentication(HttpServletResponse response, Authentication auth) {
 
         String username = auth.getName();
-        Set<String> authorities = AuthorityUtils.authorityListToSet(auth.getAuthorities());
+//        Set<String> authorities = AuthorityUtils.authorityListToSet(auth.getAuthorities());
+        List<String> authorities = auth.getAuthorities().stream().map(s -> s.getAuthority()).collect(Collectors.toList());
 
-        LOGGER.info("authorities: " + authorities.toString());
 
         // We generate a token now.
         Claims claims = Jwts.claims().setSubject(username);
+
+
         claims.put("scopes", authorities);
         LOGGER.info("Claims: " + claims.toString());
         String JWT = Jwts.builder()
@@ -46,11 +53,10 @@ public class TokenAuthenticationService {
 
     public Authentication getAuthentication(HttpServletRequest request) {
 
-//        LOGGER.info("securityContextHolder for user: ");
-//        LOGGER.info(securityContextHolder.getContext().getAuthentication().getName());
-
         String token = request.getHeader(HEADER_STRING);
         if (token != null) {
+            LOGGER.info("Parse a token____________________________________________________________ ");
+
             // parse the token.
             String username = Jwts.parser()
                     .setSigningKey(SECRET)
@@ -58,18 +64,25 @@ public class TokenAuthenticationService {
                     .getBody()
                     .getSubject();
 
-            Set<String> authorities = Jwts.parser()
-                    .setSigningKey(SECRET).parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
-                    .getBody().get("scopes",  HashSet.class);
+//            ArrayList<String> authorities = Jwts.parser()
+//                    .setSigningKey(SECRET).parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
+//                    .getBody().get("scopes", ArrayList.class);
+
+            ArrayList<String> authorities = new ArrayList<String>() {{
+                add("ROLE_REDACTOR");
+                add("ROLE_ADMIN");
+            }};
 
 
-            LOGGER.info("User " + username + " with authorities: " + authorities.toString());
+            LOGGER.info("User " + username + " with authorities: " + authorities);
 
             if (username != null) {
                 Authentication auth = new UsernamePasswordAuthenticationToken(
                         username,
                         null,
-                        AuthorityUtils.createAuthorityList("ROLE_ADMIN"));
+                        AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils.join(authorities, ','))
+                );
+
                 LOGGER.info("Auth is: " + auth.toString());
 
                 return auth;
